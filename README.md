@@ -1,1 +1,1 @@
-# CourseJS
+# Course-JS
