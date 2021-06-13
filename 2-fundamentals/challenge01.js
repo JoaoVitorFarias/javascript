@@ -1,3 +1,5 @@
+'use strict';
+
 function tip_calculator(bill) {
   if (bill < 50) {
     return (bill * 0.2);

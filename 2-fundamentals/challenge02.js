@@ -1,3 +1,5 @@
+'use strict';
+
 function calTip(bill) {
     if (bill >= 50 && bill <= 300) {
         return bill * 0.15;
