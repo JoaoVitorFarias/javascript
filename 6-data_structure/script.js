@@ -10,7 +10,7 @@ const restaurant = {
   starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
   mainMenu: ["Pizza", "Pasta", "Risotto"],
 
-  order: function (startIndex, mainIndex) {
+  order(startIndex, mainIndex) {
     return [this.starterMenu[startIndex], this.mainMenu[mainIndex]];
   },
 
@@ -29,10 +29,13 @@ const restaurant = {
     },
   },
 
-  orderDelivery: function ({ startIndex, mainIndex, time, address }) {
-    console.log(
+  orderDelivery({ startIndex, mainIndex, time, address }) {
+    /*console.log(
       `Order recived! ${this.starterMenu[startIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
-    );
+    );*/
+  },
+  orderPasta(igr1, igr2, igr3) {
+    //console.log(`Here is your pasta with ${igr1}, ${igr2} and ${igr3}`);
   },
 };
 
@@ -55,7 +58,7 @@ third = temp;
 [first, third] = [third, first];
 
 const [starter, main] = restaurant.order(1, 2);
-console.log(starter, main);
+//console.log(starter, main);
 
 const nested = [1, 5, [2, 3]];
 const [i, , j] = nested;
@@ -88,3 +91,112 @@ restaurant.orderDelivery({
   mainIndex: 1,
   startIndex: 3,
 });
+
+// Spread operator
+const arr1 = [2, 3, 6];
+const newArr1 = [1, 8, ...arr1]; // the spread operator will put the elements of the'arr1' inside the 'newArr1'
+
+//console.log(...newArr1); // the way to print each element individually
+
+//join 2 arrays or more
+const newArr2 = [...arr1, ...newArr1];
+
+// Iterables:arrays, strings, maps and sets. NOT objects
+const str = "John";
+const arr2 = [...str, " ", "L. F."];
+
+/*const ingredients = [
+  prompt("Ingedient 1 for your pasta?"),
+  prompt("Ingedient 2 for your pasta?"),
+  prompt("Ingedient 3 for your pasta?"),
+];
+
+restaurant.orderPasta(...ingredients);*/
+
+// objet copy;
+const newRestaurant = { ...restaurant, founder: "Bolt" };
+
+const [r, s, ...t] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+const { sat, ...weekdays } = restaurant.openingHours;
+
+// functions
+const add = function (...numbres) {
+  let total = 0;
+
+  for (let i = 0; i < numbres.length; i++) {
+    total += numbres[i];
+  }
+  //console.log(total);
+};
+
+add(1, 2, 3);
+add(2, 3, 5, 9, 41);
+add(1, 2, 85);
+
+// logic operatos can use and return any data type, and short-circuiting
+// OR
+// console.log(3 || "John");
+// short-circuiting - means that if the first value is a truthy value, it will
+// immediately return that first value.
+
+const guests = restaurant.numGuests || 12;
+
+// AND
+// short-circuiting - means that if the first value is a falsy value, it will
+// immediately return that first value.
+// console.log(0 || "John");
+// console.log(12 || "John");
+
+//Nullish coalescing operator
+
+restaurant.numGuests = 0;
+const guestsOr = restaurant.numGuests || 12; // will return 12, because 0 is false
+// to solve this problem it is necessary use the nullish coalescing operator
+const guestsNullish = restaurant.numGuests ?? 12;
+// it is happens because nullish works with null and undefined values, not 0 or ''
+
+//Loop for-of
+
+for (let num of t) {
+  //console.log(num);
+}
+
+// return the element with the index position
+for (let num of t.entries()) {
+  //console.log(num);
+}
+
+// destructuring
+for (let [index, num] of t.entries()) {
+  //console.log(`${index}: ${num}`);
+}
+
+// optional chaining
+// if certain propertydoes not exist, then undefined is return immediately.
+//console.log(restaurant.openingHours.mon?.open);
+
+const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+
+for (let day of days) {
+  console.log(restaurant.openingHours[day]?.open ?? "closed");
+}
+
+// verified the methods exist before call
+const order = restaurant.order?.(1, 2) ?? "Methods does not exist";
+
+//Looping objects
+// take the keys of the object
+for (const day of Object.keys(restaurant.openingHours)) {
+  console.log(day);
+}
+
+// take the values in the objects without the keys
+for (const day of Object.values(restaurant.openingHours)) {
+  console.log(day);
+}
+
+// to take the keys with the values it is necessary use the entries
+for (const day of Object.entries(restaurant.openingHours)) {
+  console.log(day);
+}
