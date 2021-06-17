@@ -179,7 +179,7 @@ for (let [index, num] of t.entries()) {
 const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 
 for (let day of days) {
-  console.log(restaurant.openingHours[day]?.open ?? "closed");
+  //console.log(restaurant.openingHours[day]?.open ?? "closed");
 }
 
 // verified the methods exist before call
@@ -188,15 +188,61 @@ const order = restaurant.order?.(1, 2) ?? "Methods does not exist";
 //Looping objects
 // take the keys of the object
 for (const day of Object.keys(restaurant.openingHours)) {
-  console.log(day);
+  //console.log(day);
 }
 
 // take the values in the objects without the keys
 for (const day of Object.values(restaurant.openingHours)) {
-  console.log(day);
+  //console.log(day);
 }
 
 // to take the keys with the values it is necessary use the entries
 for (const day of Object.entries(restaurant.openingHours)) {
-  console.log(day);
+  //console.log(day);
 }
+
+// SET
+// it is basically a colection of unique values.
+// the elements in the set has not index, because the order does not matter
+const orderSet = new Set(["João", "Maria", "João e Maria", "Maria", "João"]);
+const sizeOrder = orderSet.size;
+const hasOrder = orderSet.has("Paulo");
+orderSet.add("Paulo");
+orderSet.delete("João e Maria");
+
+for (let order of orderSet) {
+  //console.log(order);
+}
+
+const staff = [1, 2, 3, 2, 1, 2, 2, 1, 3, 5];
+const staffUnique = [...new Set(staff)]; // remove the duplication in the array
+//console.log(staffUnique);
+
+orderSet.clear();
+
+//MAP
+// map is data structure that we can use to map values to keys
+// the keys can have any type like array, string, number and etc.
+
+const rest = new Map();
+rest.set("universidade", "UnB");
+rest.set("campus", "FGA");
+
+rest.get("universidade");
+rest.has("campus");
+rest.has("cidade");
+rest.delete("campus");
+const restSize = rest.size;
+rest.set(document.querySelector("h1", "Heading"));
+
+rest.clear();
+
+//converting objects to maps
+const hoursMap = new Map(Object.entries(restaurant.openingHours));
+
+// converting maps to array
+const hoursArr = [...hoursMap];
+
+rest.entries();
+rest.keys;
+rest.values;
