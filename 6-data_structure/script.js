@@ -246,3 +246,56 @@ const hoursArr = [...hoursMap];
 rest.entries();
 rest.keys;
 rest.values;
+
+// STRING
+//console.log("GHJ12"[0]);
+const word = "Palavras apenas palavras";
+
+word.indexOf("P"); // get the position of a letter
+word.lastIndexOf("a"); // get the position of the last occurrence
+
+// get a part of a string
+// returning a copy of the string
+word.slice(2);
+word.slice(1, 5);
+word.slice(2, -2);
+
+word.toLowerCase();
+word.toUpperCase();
+word.trim(); // remove spaces
+
+//replacing
+word.replace("P", "p");
+// replace all occurrence
+word.replace(/a/g, "e");
+word.replaceAll("a", "i");
+
+word.includes("Pa"); // checks if contains the element and return a boolean
+word.startsWith("P");
+word.endsWith("vra");
+
+//split
+//splits a string according to the defined element
+word.split(" ");
+
+// join
+["São", word].join(" ");
+
+const capitalizeName = function (name) {
+  const names = name.split(" ");
+  const nameCapitalize = [];
+
+  for (const n of names) {
+    nameCapitalize.push(n[0].toUpperCase() + n.slice(1));
+    //nameCapitalize.push(n.replace(n[0], n[0].toUpperCase())));
+  }
+  return nameCapitalize.join(" ");
+};
+
+// padding
+const message20 = "Go to school 20";
+message20.padStart(25, "+"); // add '+' at the beginning even the word has 25 characters
+message20.padEnd(25, "+");
+
+// repeat
+message20.repeat(20);
